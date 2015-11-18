@@ -1,4 +1,7 @@
 #
+# Cookbook Name:: updater
+# Role:: updater
+#
 # Copyright 2013-2014, SUSE LINUX Products GmbH
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,18 +17,9 @@
 # limitations under the License.
 #
 
-barclamp:
-  name: 'updater'
-  display: 'Updater'
-  description: 'System Package Updater'
-  version: 0
-  user_managed: true
-  member:
-    - 'crowbar'
+name "updater-upgrade"
+description "Prepare nodes for the cloud upgrade"
 
-crowbar:
-  layout: 1
-  order: 99
-  run_order: 2000
-  chef_order: 2000
-  proposal_schema_version: 3
+run_list(
+  "recipe[updater::upgrade]"
+)

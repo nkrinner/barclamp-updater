@@ -12,20 +12,27 @@
           "include_reboot_patches": false
         }
       },
-      "one_shot_run": false
+      "one_shot_run": false,
+      "upgrade_one_shot_run": false
     }
   },
   "deployment": {
     "updater": {
-      "crowbar-revision": 0,
+      "crowbar-revision": 1,
       "crowbar-applied": false,
       "elements": {},
       "element_states": {
-        "updater": [ "readying", "ready", "applying" ]
+        "updater": [ "readying", "ready", "applying" ],
+        "updater-upgrade": [ "readying", "ready", "applying" ]
       },
       "element_order": [
-        [ "updater" ]
+        [ "updater" ],
+        [ "updater-upgrade" ]
       ],
+      "element_run_list_order": {
+        "updater": 40,
+        "updater-upgrade": 2000
+      },
       "config": {
         "environment": "updater-config-base",
         "mode": "full",
